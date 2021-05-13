@@ -35,21 +35,18 @@ print(stick_cutting2([1,1,1]))
 print(stick_cutting2([2,10]))
 print("=============")
 
-
+from collections import Counter
 def stick_cutting3(sticks): 
-    result = []
-    m =0
-    for item in sticks:
-        if item <m:
-            m -=item
-        else:
-            m =item
-        result.append(len(sticks)) 
-        sticks =sticks[1:]
-    return result
-
-print(stick_cutting2([1,2,3]))
-print(stick_cutting2([]))
-print(stick_cutting2([1,1,1]))
-print(stick_cutting2([2,10]))
+    answer=[]
+    result = Counter(sticks)
+    x= sum(result.values())
+    for k,v in result.items():
+        answer.append(x)
+        x-=v
+    return(answer)
+    
+print(stick_cutting3([1,2,3]))
+print(stick_cutting3([]))
+print(stick_cutting3([1,1,1]))
+print(stick_cutting3([2,10]))
 print("=============")
